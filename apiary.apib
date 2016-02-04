@@ -1,0 +1,46 @@
+FORMAT: 1A
+HOST: http://api-test.grobmeier.de/
+
+# My API
+
+This is some description.
+
+## Person Collection [/persons]
+
+### Create a new person [POST]
+
++ Request (application/json)
+
+          {
+            "name": "Christian",
+            "surname": "Grobmeier"
+          }
+    
++ Response 200 (application/json)
+
+          {
+            "id": 1235,
+            "name": "Christian",
+            "surname": "Grobmeier"
+          }
+      
+### Get a person [GET /persons/{id}{?include,format}]
+
++ Parameters
+    + id: 123 (string, required)
+    + include: metadata (string, optional)
+    + format: xml (string, optional)
+        + Members
+            + xml
+            + json
+            + html
+        + Default: xml
+
++ Response 200 (application/json)
+
+          {
+            "id": 1235,
+            "name": "Christian",
+            "surname": "Grobmeier"
+          }
+      
