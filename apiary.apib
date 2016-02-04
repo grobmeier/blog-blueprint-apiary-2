@@ -7,40 +7,42 @@ This is some description.
 
 ## Person Collection [/persons]
 
-### Create a new person [POST]
+### Get all persons [GET]
 
-+ Request (application/json)
-
-          {
-            "name": "Christian",
-            "surname": "Grobmeier"
-          }
-    
 + Response 200 (application/json)
+    + Attributes
+        - data (array[Person])
 
-          {
-            "id": 1235,
-            "name": "Christian",
-            "surname": "Grobmeier"
-          }
-      
-### Get a person [GET /persons/{id}{?include,format}]
+### Get a person [GET /persons/{id}{?include}]
 
 + Parameters
     + id: 123 (string, required)
     + include: metadata (string, optional)
-    + format: xml (string, optional)
         + Members
-            + xml
-            + json
-            + html
-        + Default: xml
-
+            + metadata
+        + Default: metadata            
+    
 + Response 200 (application/json)
 
-          {
-            "id": 1235,
-            "name": "Christian",
-            "surname": "Grobmeier"
-          }
-      
+    + Attributes (Person)
+
++ Request with metadata (application/json)
+
++ Response 200 (application/json)
+    
+    + Attributes (PersonWithMetaData)
+
+# Data Structures
+
+## Person (object)
+
+- id: 123 (number)
+- name: Christian (string, required)
+- surname: Grobmeier (string, required)
+
+## PersonWithMetaData (object)
+
+- Include Person
+- meta (object)
+    - created: 2015
+    - editor: 1234
